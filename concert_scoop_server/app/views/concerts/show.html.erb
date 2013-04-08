@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @concert.name %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @concert.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @concert.state %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @concert.zip %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%= @concert.start_time %>
+</p>
+
+<p>
+  <b>Twitter tag:</b>
+  <%= @concert.twitter_tag %>
+</p>
+
+<p>
+  <b>Facebook page:</b>
+  <%= @concert.facebook_page %>
+</p>
+
+<%= link_to 'Edit', edit_concert_path(@concert) %> |

@@ -1,0 +1,45 @@
+<%= form_for(@concert) do |f| %>
+  <% if @concert.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@concert.errors.count, "error") %> prohibited this concert from being saved:</h2>
+
+      <ul>
+      <% @concert.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br />
+    <%= f.datetime_select :start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter_tag %><br />
+    <%= f.text_field :twitter_tag %>
+  </div>
+  <div class="field">
+    <%= f.label :facebook_page %><br />
+    <%= f.text_field :facebook_page %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

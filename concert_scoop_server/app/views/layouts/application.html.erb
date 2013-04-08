@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Concert Scoop</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div id='container'>
+	<div id='banner'><%= image_tag 'guitar.png'%>Concert<br> <span id='scoop'>Scoop</span></div>
+	
+	<div id='nav'>
+		<ul>
+			<li><%= link_to "Home", "/" %></li>
+			<li><%= link_to "Concerts", concerts_path%> </li>
+			<li><%= link_to "New Concert", new_concert_path %></li>
+		</ul>
+	</div>
+		
+	<div id='content'>
+		<%- unless flash[:notice].blank? %>
+			<div id="notice"><%= flash[:notice] %></div>
+		<%-end %>
+		<%- unless flash[:alert].blank? %>
+			<div id="alert"><%= flash[:alert] %></div>
+		<%-end %>
+		
+		<%= yield %>
+	</div>
+	
+	<div id='footer'><p>The place to share your concert experience</p></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  start_time: 2013-04-07 09:10:14
+  twitter_tag: MyString
+  facebook_page: MyString
+
+two:
+  name: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  start_time: 2013-04-07 09:10:14
+  twitter_tag: MyString
+  facebook_page: MyString
