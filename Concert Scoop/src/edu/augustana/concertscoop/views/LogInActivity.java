@@ -1,5 +1,6 @@
-package edu.augustana.concertscoop;
+package edu.augustana.concertscoop.views;
 
+import edu.augustana.concertscoop.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -16,7 +17,6 @@ public class LogInActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.log_in, menu);
         return true;
     }
     
