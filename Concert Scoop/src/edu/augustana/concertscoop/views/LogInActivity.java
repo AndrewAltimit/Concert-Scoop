@@ -3,6 +3,7 @@ package edu.augustana.concertscoop.views;
 import edu.augustana.concertscoop.R;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,9 +23,8 @@ public class LogInActivity extends Activity {
 		{
 			//Attached to the twitter button
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),
-                        "Twitter was clicked!",
-                         Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), ListConcerts.class);
+                startActivity(intent);
             }
 		});
         

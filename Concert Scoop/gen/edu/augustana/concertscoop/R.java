@@ -33,7 +33,8 @@ public final class R {
         public static final int twitterButton=0x7f080001;
     }
     public static final class layout {
-        public static final int activity_log_in=0x7f030000;
+        public static final int activity_listconcerts=0x7f030000;
+        public static final int activity_log_in=0x7f030001;
     }
     public static final class menu {
         public static final int log_in=0x7f070000;
@@ -42,6 +43,8 @@ public final class R {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050002;
+        public static final int server_address=0x7f050003;
+        public static final int server_port=0x7f050004;
     }
     public static final class style {
         /** 
