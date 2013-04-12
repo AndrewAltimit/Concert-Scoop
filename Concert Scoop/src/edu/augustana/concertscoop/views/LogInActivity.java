@@ -4,6 +4,10 @@ import edu.augustana.concertscoop.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class LogInActivity extends Activity {
 
@@ -11,6 +15,42 @@ public class LogInActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        
+        
+        ImageButton b1 = (ImageButton)findViewById(R.id.twitterButton);
+        b1.setOnClickListener(new OnClickListener()
+		{
+			//Attached to the twitter button
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),
+                        "Twitter was clicked!",
+                         Toast.LENGTH_LONG).show();
+            }
+		});
+        
+        
+        ImageButton b2 = (ImageButton)findViewById(R.id.googleButton);
+        b2.setOnClickListener(new OnClickListener()
+		{
+			//Attached to the google button
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),
+                        "Google was clicked!",
+                         Toast.LENGTH_LONG).show();
+            }
+		}); 
+		
+        ImageButton b3 = (ImageButton)findViewById(R.id.facebookButton);
+        b3.setOnClickListener(new OnClickListener()
+		{
+			//Attached to the facebook button
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),
+                        "Facebook was clicked!",
+                         Toast.LENGTH_LONG).show();
+            }
+		});
+        
     }
 
 

@@ -12,29 +12,42 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/twitterButton"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp"
-        android:text="Login using one of the services below:" />
-
+        android:layout_marginTop="10dp"
+        android:text="Login using a service below:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
+                
     <ImageButton
-        android:id="@+id/imageButton1"
+        android:id="@+id/twitterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignLeft="@+id/googleButton"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="59dp"
-        android:scaleType="centerInside"
+        android:layout_marginTop="35dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/twitter" />
-
+        
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/googleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/imageButton1"
-        android:layout_marginLeft="61dp"
-        android:layout_marginTop="38dp"
+        android:layout_below="@+id/twitterButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/google" />
+                      
+    <ImageButton
+        android:id="@+id/facebookButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/googleButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/facebook" />
 
 </RelativeLayout>
