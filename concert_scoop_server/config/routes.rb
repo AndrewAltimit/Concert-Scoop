@@ -3,5 +3,4 @@ ConcertScoopServer::Application.routes.draw do
 
   root :to => 'welcome#home'
   resources :concerts
-  match 'auth/:provider/callback', to: 'sessions#create'
 end

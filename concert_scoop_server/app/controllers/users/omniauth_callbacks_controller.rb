@@ -2,9 +2,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   
   def twitter
     raise env['omniauth.auth'].to_yaml
-    
   end    
     
+  def facebook
+    raise env['omniauth.auth'].to_yaml
+  end
   private
   
   def redirect_user(user)
