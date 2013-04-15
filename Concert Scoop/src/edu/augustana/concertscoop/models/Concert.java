@@ -1,6 +1,11 @@
 package edu.augustana.concertscoop.models;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,32 +43,47 @@ public class Concert {
 		JSONParser jParser = new JSONParser();
 
 		// getting JSON string from URL
-		JSONObject json = jParser.getJSONFromUrl(url);
+		jParser.execute(file);
+		JSONObject json;
 		
-		//DEBUGGING Show contents of JSON Data
-		System.out.print(json.toString());
-
-		//Go through all the elements in the JSON String
+		
 		try {
-		    // Getting Array of Concerts
-			JSONArray concerts;
-			concerts = json.getJSONArray("TAG_CONCERTS");
+			json = jParser.get();
+			//DEBUGGING Show contents of JSON Data
+			System.out.print(json.toString());
 
-		    // looping through All Concerts
-		    for(int i = 0; i < concerts.length(); i++){
-		        JSONObject c = concerts.getJSONObject(i);
-		        
-		        //Debugging
-		        System.out.print(c.toString());
-		        
-		        
-		        // Storing each json item in variable
-		        //String title = c.getString("Title");
+			//Go through all the elements in the JSON String
+			try {
+			    // Getting Array of Concerts
+				JSONArray concerts;
+				concerts = json.getJSONArray("TAG_CONCERTS");
 
-		    }
-		} catch (JSONException e) {
-		    e.printStackTrace();
+			    // looping through All Concerts
+			    for(int i = 0; i < concerts.length(); i++){
+			        JSONObject c = concerts.getJSONObject(i);
+			        
+			        //Debugging
+			        System.out.print(c.toString());
+			        
+			        
+			        // Storing each json item in variable
+			        //String title = c.getString("Title");
+
+			    }
+			} catch (JSONException e) {
+			    e.printStackTrace();
+			}
+			
+			
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ExecutionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+		
+		
 		
 		//Debugging Purposes - Return empty array
 		ArrayList<Concert> temp = new ArrayList<Concert>();
@@ -76,6 +96,6 @@ public class Concert {
 	}
 
 	private String title;
-	static String url = "http://127.0.0.1:3000/concerts.json";
+	static String file = "/concerts.json";
 
 }
