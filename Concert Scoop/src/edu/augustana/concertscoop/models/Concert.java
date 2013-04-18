@@ -1,93 +1,69 @@
 package edu.augustana.concertscoop.models;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
-
+import org.apache.http.HttpResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import edu.augustana.concertscoop.util.JSONParser;
 
 public class Concert {
 
-	public void Concert(int server_id) {
+	public Concert(int server_id) {
+		//
 		// Make a connection with the server
 
 		// pull data from server about this concert based on the id number
 		// And put the data into an arraylist
-		ArrayList<String> temp = new ArrayList<String>();
+
 		// Populate fields with the pulled data
-		Concert(temp);
-
+		// Concert(jConcert);
 	}
 
-	public void Concert(ArrayList<String> properties) {
-		// title = properties(0)
-		// date = properties(1)
-		// ...
+	public Concert(JSONObject jConcert) throws JSONException {
+		city = (String) jConcert.get("city");
+		created_at = (Date) jConcert.get("created_at");
+		facebook_page = (String) jConcert.get("facebook_page");
+		name = (String) jConcert.get("name");
+		start_time = (Date) jConcert.get("start_time");
+		state = (String) jConcert.get("state");
+		twitter_tag = (String) jConcert.get("twitter_tage");
+		updated_at = (Date) jConcert.get("updated_at");
+		zip = (String) jConcert.get("zip");
 	}
 
-	// Return the list of concerts
+	// Connects to the web server and returns an ArrayList of concerts
 	public static ArrayList<Concert> getConcerts() {
-		
-		//Pseudocode
-		// http request to server for all concerts (or subset)
-		// get back json data
-		// parse json into concert objects
-		// concert t1 = new Concert(Properties Array);
-		// add all concert objects into arraylist
-
-		// Creating JSON Parser instance
-		JSONParser jParser = new JSONParser();
-
-		// getting JSON string from URL
-		jParser.execute(file);
-		JSONObject json;
-		
-		
 		try {
-			json = jParser.get();
-			//DEBUGGING Show contents of JSON Data
-			System.out.print(json.toString());
+			ServerConnection conn = new ServerConnection();
+			HttpResponse response;
+			response = conn.execute(GET_CONCERTS).get();
+			JSONParser jParser = new JSONParser<Concert>(response,
+					Concert.class);
+			JSONArray concerts = jParser.parseAll();
+			return jParser.JSONtoObjects(concerts);
+		} catch (IllegalArgumentException e) {
 
-			//Go through all the elements in the JSON String
-			try {
-			    // Getting Array of Concerts
-				JSONArray concerts;
-				concerts = json.getJSONArray("TAG_CONCERTS");
-
-			    // looping through All Concerts
-			    for(int i = 0; i < concerts.length(); i++){
-			        JSONObject c = concerts.getJSONObject(i);
-			        
-			        //Debugging
-			        System.out.print(c.toString());
-			        
-			        
-			        // Storing each json item in variable
-			        //String title = c.getString("Title");
-
-			    }
-			} catch (JSONException e) {
-			    e.printStackTrace();
-			}
-			
-			
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (ExecutionException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
 		}
-		
-		
-		
-		//Debugging Purposes - Return empty array
-		ArrayList<Concert> temp = new ArrayList<Concert>();
-		return temp;
+		return null;
 	}
 
 	// Make a new concert entry
@@ -95,7 +71,16 @@ public class Concert {
 		return true;
 	}
 
-	private String title;
-	static String file = "/concerts.json";
+	public String city;
+	public Date created_at;
+	public String facebook_page;
+	public String name;
+	public Date start_time;
+	public String state;
+	public String twitter_tag;
+	public Date updated_at;
+	public String zip;
+
+	static final String GET_CONCERTS = "concerts.json";
 
 }
