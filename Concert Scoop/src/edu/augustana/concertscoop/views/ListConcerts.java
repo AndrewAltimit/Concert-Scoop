@@ -1,5 +1,6 @@
 package edu.augustana.concertscoop.views;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import edu.augustana.concertscoop.R;
 import edu.augustana.concertscoop.models.Concert;
@@ -14,17 +15,17 @@ public class ListConcerts extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_listconcerts);
 		concerts = Concert.getConcerts();
-
-		if (concerts.isEmpty()) {
-			Toast.makeText(getApplicationContext(), "Empty!", Toast.LENGTH_LONG)
-					.show();
-		} else {
-			Toast.makeText(getApplicationContext(), "Not Empty!",
-					Toast.LENGTH_LONG).show();
-		}
-
+		populateListView(concerts);
+	}
+	
+	private void populateListView(ArrayList<Concert> concerts){
+		
 	}
 
+	private String[] ConcertsForListView(){
+		//How do you want the concert formatted??
+		return new String[1];
+	}
 	private ArrayList<Concert> concerts;
 
 }

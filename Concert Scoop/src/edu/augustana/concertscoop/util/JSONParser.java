@@ -4,23 +4,21 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
+import java.util.Iterator;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.util.Log;
 
-public class JSONParser<E> {
-	
-	//Creates a new JSONParser object coupled to an HttpResponse
-	public JSONParser(HttpResponse serverReply, Class<E> clazz) {
-		this(clazz);
+public class JSONParser {
 
+	// Creates a new JSONParser object coupled to an HttpResponse
+	public JSONParser(HttpResponse serverReply) {
 		HttpEntity httpEntity = serverReply.getEntity();
-		jObj = new JSONObject();
 		try {
 			is = httpEntity.getContent();
 		} catch (IllegalStateException e) {
@@ -30,45 +28,41 @@ public class JSONParser<E> {
 		}
 	}
 
-	// Since our class needs to instantiate objects but we don't know the type
-	// at complie time its up to the caller to pass that information in
-	public JSONParser(Class<E> clazz) {
-		this.clazz = clazz;
-	}
-
-	//returns a JSONArray of all the JSONObjects that were in the HttpRequest
-	public JSONArray parseAll() throws JSONException {
+	// returns a JSONArray of all the JSONObjects that were in the HttpRequest
+	public JSONArray parse() {
 		getStringFromResponse();
-		return new JSONArray(jsonString);
-	}
-
-	//returns a JSONObject from an HttpRequest
-	public JSONObject parse() {
-		getStringFromResponse();
-		return null;
-	}
-
-	//Takes a JSONArray of JSONObjects and returns an ArrayList of E objects
-	public ArrayList<E> JSONtoObjects(JSONArray jArray)
-			throws IllegalArgumentException, InstantiationException,
-			IllegalAccessException, InvocationTargetException,
-			NoSuchMethodException, JSONException 
-	{
-		ArrayList<E> list = new ArrayList<E>();
-		for (int i = 0; i < jArray.length(); i++) 
-		{
-			jObj = (JSONObject) jArray.get(i);
-			list.add(createObject());
+		try {
+			JSONArray jArray;
+			jArray = new JSONArray(jsonString);
+			return jArray;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return list;
+		return new JSONArray();
 	}
-	
-	//Takes a JSONObject and returns an E object
-	public E JSONtoObject(JSONObject jObject) throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException{
-		return createObject();
+
+	public JSONArray parse(String emptyValue) {
+		JSONArray jArray = parse();
+		try {
+			for (int i = 0; i < jArray.length(); i++) {
+				  JSONObject jObject = (JSONObject) jArray.get(i);
+			      Iterator<?> keys = jObject.keys();
+			        while( keys.hasNext() ){
+			            String key = (String)keys.next();
+			            if(jObject.isNull(key)){
+			            	jObject.put(key, emptyValue);
+			            	jArray.put(i, jObject);
+			            }
+			        }
+			}
+		} catch (Exception e) {
+
+		}
+		return jArray;
 	}
-	
-	//Takes the HttpResponse object and saves a string that can be used to build JSONArrays or JSONObjects
+
+	// Takes the HttpResponse object and saves a string that can be used to
+	// build JSONArrays or JSONObjects
 	private void getStringFromResponse() {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
@@ -85,17 +79,7 @@ public class JSONParser<E> {
 			Log.e("Buffer Error", "Error converting result " + e.toString());
 		}
 	}
-	
-	
-	//Builds E objects using their JSONObject constructor
-	private E createObject() throws IllegalArgumentException,
-		InstantiationException, IllegalAccessException,
-		InvocationTargetException, NoSuchMethodException {
-		return clazz.getDeclaredConstructor(JSONObject.class).newInstance(jObj);
-	}
 
-	private JSONObject jObj;
 	private InputStream is;
 	private String jsonString;
-	private final Class<E> clazz;
 }

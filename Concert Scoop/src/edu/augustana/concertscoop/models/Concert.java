@@ -1,9 +1,7 @@
 package edu.augustana.concertscoop.models;
 
-import java.lang.reflect.InvocationTargetException;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 import org.apache.http.HttpResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,45 +23,34 @@ public class Concert {
 
 	public Concert(JSONObject jConcert) throws JSONException {
 		city = (String) jConcert.get("city");
-		created_at = (Date) jConcert.get("created_at");
+		created_at = (String) jConcert.get("created_at");
 		facebook_page = (String) jConcert.get("facebook_page");
 		name = (String) jConcert.get("name");
-		start_time = (Date) jConcert.get("start_time");
+		start_time = (String) jConcert.get("start_time");
 		state = (String) jConcert.get("state");
-		twitter_tag = (String) jConcert.get("twitter_tage");
-		updated_at = (Date) jConcert.get("updated_at");
+		twitter_tag = (String) jConcert.get("twitter_tag");
+		updated_at = (String) jConcert.get("updated_at");
 		zip = (String) jConcert.get("zip");
 	}
 
 	// Connects to the web server and returns an ArrayList of concerts
 	public static ArrayList<Concert> getConcerts() {
+		ServerConnection conn = new ServerConnection();
+		HttpResponse response;
 		try {
-			ServerConnection conn = new ServerConnection();
-			HttpResponse response;
 			response = conn.execute(GET_CONCERTS).get();
-			JSONParser jParser = new JSONParser<Concert>(response,
-					Concert.class);
-			JSONArray concerts = jParser.parseAll();
-			return jParser.JSONtoObjects(concerts);
-		} catch (IllegalArgumentException e) {
-
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		} catch (JSONException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (ExecutionException e) {
+			JSONParser jParser = new JSONParser(response);
+			JSONArray jsonConcerts;
+			jsonConcerts = jParser.parse("");
+			ArrayList<Concert> concertslist = new ArrayList<Concert>();
+			for (int i = 0; i < jsonConcerts.length(); i++) {
+				concertslist.add(new Concert((JSONObject) jsonConcerts.get(i)));
+			}
+			return concertslist;
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return new ArrayList<Concert>();
 	}
 
 	// Make a new concert entry
@@ -71,15 +58,25 @@ public class Concert {
 		return true;
 	}
 
-	public String city;
-	public Date created_at;
-	public String facebook_page;
-	public String name;
-	public Date start_time;
-	public String state;
-	public String twitter_tag;
-	public Date updated_at;
-	public String zip;
+	public String toString() {
+		String result = "";
+		result = "City: " + city + " Created At: " + created_at
+				+ " Facebook Page: " + facebook_page + " Name: " + name
+				+ " Start Time: " + start_time + " State: " + state
+				+ " Twitter Tag: " + twitter_tag + " Updated At: " + updated_at
+				+ " Zip: " + zip;
+		return result;
+	}
+
+	public String city = "";
+	public String created_at = "";
+	public String facebook_page = "";
+	public String name = "";
+	public String start_time = "";
+	public String state = "";
+	public String twitter_tag = "";
+	public String updated_at = "";
+	public String zip = "";
 
 	static final String GET_CONCERTS = "concerts.json";
 
