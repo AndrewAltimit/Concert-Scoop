@@ -5,6 +5,8 @@ import edu.augustana.concertscoop.R;
 import edu.augustana.concertscoop.models.Concert;
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
@@ -19,6 +21,13 @@ public class ListConcerts extends ListActivity implements OnClickListener {
 		populateListView();
 	}
 
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.main, menu);
+	    return true;
+	}
+	
+	
 	private void populateListView() {
 
 		ListView concertListView = (ListView) findViewById(android.R.id.list);
