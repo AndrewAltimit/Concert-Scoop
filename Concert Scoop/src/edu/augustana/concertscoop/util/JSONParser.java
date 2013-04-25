@@ -29,7 +29,7 @@ public class JSONParser {
 	}
 
 	// returns a JSONArray of all the JSONObjects that were in the HttpRequest
-	public JSONArray parse() {
+	public JSONArray parseAll() {
 		getStringFromResponse();
 		try {
 			JSONArray jArray;
@@ -41,24 +41,53 @@ public class JSONParser {
 		return new JSONArray();
 	}
 
-	public JSONArray parse(String emptyValue) {
-		JSONArray jArray = parse();
+	public JSONArray parseAll(String emptyValue) {
+		JSONArray jArray = parseAll();
 		try {
 			for (int i = 0; i < jArray.length(); i++) {
-				  JSONObject jObject = (JSONObject) jArray.get(i);
-			      Iterator<?> keys = jObject.keys();
-			        while( keys.hasNext() ){
-			            String key = (String)keys.next();
-			            if(jObject.isNull(key)){
-			            	jObject.put(key, emptyValue);
-			            	jArray.put(i, jObject);
-			            }
-			        }
+				JSONObject jObject = (JSONObject) jArray.get(i);
+				Iterator<?> keys = jObject.keys();
+				while (keys.hasNext()) {
+					String key = (String) keys.next();
+					if (jObject.isNull(key)) {
+						jObject.put(key, emptyValue);
+						jArray.put(i, jObject);
+					}
+				}
 			}
 		} catch (Exception e) {
 
 		}
 		return jArray;
+	}
+
+	// returns a JSONArray of all the JSONObjects that were in the HttpRequest
+	public JSONObject parse() {
+		getStringFromResponse();
+		try {
+			JSONObject jObject;
+			jObject = new JSONObject(jsonString);
+			return jObject;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new JSONObject();
+	}
+
+	public JSONObject parse(String emptyValue) {
+		JSONObject jObject = parse();
+		try {
+			Iterator<?> keys = jObject.keys();
+			while (keys.hasNext()) {
+				String key = (String) keys.next();
+				if (jObject.isNull(key)) {
+					jObject.put(key, emptyValue);
+				}
+			}
+		} catch (Exception e) {
+
+		}
+		return jObject;
 	}
 
 	// Takes the HttpResponse object and saves a string that can be used to

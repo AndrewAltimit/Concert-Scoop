@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import edu.augustana.concertscoop.R;
 import edu.augustana.concertscoop.models.Concert;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ListView;
 
-public class ListConcerts extends ListActivity implements OnClickListener {
+public class ListConcerts extends ListActivity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +35,16 @@ public class ListConcerts extends ListActivity implements OnClickListener {
 		concertListView.setAdapter(customAdapter);
 	}
 
-	@Override
-	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		
+
+	
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		Intent intent = new Intent(getApplicationContext(), ConcertInfo.class);
+		Bundle b = new Bundle();
+		b.putInt("id", concerts.get(position).id); //The concert ID
+		intent.putExtras(b); //Transferring ID number to new activity
+		startActivity(intent);
+		registerForContextMenu(v);
+
 	}
 	
 	

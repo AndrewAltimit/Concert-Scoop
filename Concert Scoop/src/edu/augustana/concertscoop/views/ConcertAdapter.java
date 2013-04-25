@@ -44,7 +44,7 @@ public class ConcertAdapter extends BaseAdapter {
 	      ViewHolder holder = null;
 	      if(convertView == null) {
 	         holder = new ViewHolder();
-	         convertView = inflater.inflate(R.layout.listview, null);
+	         convertView = inflater.inflate(R.layout.concertlistview, null);
 	         holder.textView1 = (TextView) convertView.findViewById(R.id.textView1);
 	         holder.textView2 = (TextView) convertView.findViewById(R.id.textView2);
 	         holder.textView3 = (TextView) convertView.findViewById(R.id.textView3);

@@ -14,8 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="edu.augustana.concertscoop.views.LogInActivity"
-            android:label="@string/app_name" >
+            android:name="edu.augustana.concertscoop.views.LogInActivity">
         </activity>
         <activity android:name="edu.augustana.concertscoop.views.ListConcerts">
             <intent-filter>
@@ -23,6 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name="edu.augustana.concertscoop.views.ConcertInfo"></activity>
     </application>
 	<uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

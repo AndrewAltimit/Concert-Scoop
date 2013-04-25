@@ -1,6 +1,5 @@
 package edu.augustana.concertscoop.models;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import org.apache.http.HttpResponse;
 import org.json.JSONArray;
@@ -13,26 +12,33 @@ public class Concert {
 	public Concert(int server_id) {
 		//
 		// Make a connection with the server
-
-		// pull data from server about this concert based on the id number
-		// And put the data into an arraylist
-
-		// Populate fields with the pulled data
-		// Concert(jConcert);
+		JSONObject jConcert = getConcert(server_id);
+		setFields(jConcert);
 	}
 
-	public Concert(JSONObject jConcert) throws JSONException {
-		city = (String) jConcert.get("city");
-		created_at = (String) jConcert.get("created_at");
-		facebook_page = (String) jConcert.get("facebook_page");
-		name = (String) jConcert.get("name");
-		start_time = (String) jConcert.get("start_time");
-		state = (String) jConcert.get("state");
-		twitter_tag = (String) jConcert.get("twitter_tag");
-		updated_at = (String) jConcert.get("updated_at");
-		zip = (String) jConcert.get("zip");
+	public Concert(JSONObject jConcert){
+		setFields(jConcert);
 	}
 
+	
+	private void setFields(JSONObject jConcert){
+		try {
+			city = (String) jConcert.get("city");
+			created_at = (String) jConcert.get("created_at");
+			facebook_page = (String) jConcert.get("facebook_page");
+			name = (String) jConcert.get("name");
+			start_time = (String) jConcert.get("start_time");
+			state = (String) jConcert.get("state");
+			twitter_tag = (String) jConcert.get("twitter_tag");
+			updated_at = (String) jConcert.get("updated_at");
+			zip = (String) jConcert.get("zip");
+			id =  (Integer) jConcert.get("id");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	// Connects to the web server and returns an ArrayList of concerts
 	public static ArrayList<Concert> getConcerts() {
 		ServerConnection conn = new ServerConnection();
@@ -41,7 +47,7 @@ public class Concert {
 			response = conn.execute(GET_CONCERTS).get();
 			JSONParser jParser = new JSONParser(response);
 			JSONArray jsonConcerts;
-			jsonConcerts = jParser.parse("");
+			jsonConcerts = jParser.parseAll("");
 			ArrayList<Concert> concertslist = new ArrayList<Concert>();
 			for (int i = 0; i < jsonConcerts.length(); i++) {
 				concertslist.add(new Concert((JSONObject) jsonConcerts.get(i)));
@@ -57,7 +63,25 @@ public class Concert {
 	public boolean update() {
 		return true;
 	}
-
+	
+	private JSONObject getConcert(int server_id) {
+		ServerConnection conn = new ServerConnection();
+		HttpResponse response;
+		try {
+			String filename = "concerts/" + server_id + ".json";
+			response = conn.execute(filename).get();
+			
+			JSONParser jParser = new JSONParser(response);
+			JSONObject jsonConcert;
+			jsonConcert = jParser.parse("");
+			return jsonConcert;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	
 	public String toString() {
 		String result = "";
 		result = "City: " + city + " Created At: " + created_at
@@ -77,6 +101,7 @@ public class Concert {
 	public String twitter_tag = "";
 	public String updated_at = "";
 	public String zip = "";
+	public int id;
 
 	static final String GET_CONCERTS = "concerts.json";
 
