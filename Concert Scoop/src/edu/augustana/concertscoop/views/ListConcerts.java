@@ -11,8 +11,13 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ListView;
 
-public class ListConcerts extends ListActivity{
+/**
+ * An activity which lists concerts pulled from the server and provides
+ * interaction with each concert object
+ */
+public class ListConcerts extends ListActivity {
 
+	/** Constructor - Pulls concerts from the server and puts them in a listview */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,33 +26,34 @@ public class ListConcerts extends ListActivity{
 		populateListView();
 	}
 
+	/** Callback for the ActionBar */
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.main, menu);
-	    return true;
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		return true;
 	}
-	
-	
-	private void populateListView() {
 
+	/** Populates the listview with concert objects */
+	private void populateListView() {
 		ListView concertListView = (ListView) findViewById(android.R.id.list);
 		ConcertAdapter customAdapter = new ConcertAdapter(this, concerts);
 		concertListView.setAdapter(customAdapter);
 	}
 
-
-	
+	/**
+	 * OnClickLister for the listview - Starts the ConcertInfo activity and
+	 * passes the concert ID of the concert clicked
+	 */
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		Intent intent = new Intent(getApplicationContext(), ConcertInfo.class);
 		Bundle b = new Bundle();
-		b.putInt("id", concerts.get(position).id); //The concert ID
-		intent.putExtras(b); //Transferring ID number to new activity
+		b.putInt("id", concerts.get(position).id); // The concert ID
+		intent.putExtras(b); // Transferring ID number to new activity
 		startActivity(intent);
 		registerForContextMenu(v);
 
 	}
-	
-	
+
 	private ArrayList<Concert> concerts;
 
 }

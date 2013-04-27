@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+/**Custom Adapter Class for handling Concert ListView*/
 public class ConcertAdapter extends BaseAdapter {
 
 	  private LayoutInflater inflater;

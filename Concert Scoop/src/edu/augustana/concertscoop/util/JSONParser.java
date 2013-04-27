@@ -1,34 +1,41 @@
 package edu.augustana.concertscoop.util;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Iterator;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.util.Log;
 
+/**
+ * Utlity Class - Takes an HTTP response and parses it into either a JSONObject
+ * or a JSONArray of JSONObjects
+ */
 public class JSONParser {
 
-	// Creates a new JSONParser object coupled to an HttpResponse
+	/**
+	 * Constructor - Creates a new JSONParser object coupled to an HttpResponse
+	 * 
+	 * @param serverReply
+	 *            The HTTPResponse
+	 */
 	public JSONParser(HttpResponse serverReply) {
 		HttpEntity httpEntity = serverReply.getEntity();
 		try {
 			is = httpEntity.getContent();
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	// returns a JSONArray of all the JSONObjects that were in the HttpRequest
+	/**
+	 * Parse an HTTPRequest given that the request has multiple JSONObjects
+	 * 
+	 * @return JSONArray All the JSONObjects that were in the HttpRequest
+	 */
 	public JSONArray parseAll() {
 		getStringFromResponse();
 		try {
@@ -41,6 +48,13 @@ public class JSONParser {
 		return new JSONArray();
 	}
 
+	/**
+	 * Parse an HTTPRequest given that the request has multiple JSONObjects
+	 * 
+	 * @return JSONArray All the JSONObjects that were in the HttpRequest
+	 * @param emptyValue
+	 *            Replace null JSONObject values with emptyValue
+	 */
 	public JSONArray parseAll(String emptyValue) {
 		JSONArray jArray = parseAll();
 		try {
@@ -61,7 +75,11 @@ public class JSONParser {
 		return jArray;
 	}
 
-	// returns a JSONArray of all the JSONObjects that were in the HttpRequest
+	/**
+	 * Parse an HTTPRequest given that the request only has one JSONObject
+	 * 
+	 * @return JSONObject The JSONObject from the HttpRequest
+	 */
 	public JSONObject parse() {
 		getStringFromResponse();
 		try {
@@ -74,6 +92,13 @@ public class JSONParser {
 		return new JSONObject();
 	}
 
+	/**
+	 * Parse an HTTPRequest given that the request only has one JSONObject
+	 * 
+	 * @return JSONObject The JSONObject from the HttpRequest
+	 * @param emptyValue
+	 *            Replace null JSONObject values with emptyValue
+	 */
 	public JSONObject parse(String emptyValue) {
 		JSONObject jObject = parse();
 		try {
@@ -90,8 +115,10 @@ public class JSONParser {
 		return jObject;
 	}
 
-	// Takes the HttpResponse object and saves a string that can be used to
-	// build JSONArrays or JSONObjects
+	/**
+	 * Takes the HttpResponse and converts it to a string that can be used to
+	 * build JSONArrays or JSONObjects
+	 */
 	private void getStringFromResponse() {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(

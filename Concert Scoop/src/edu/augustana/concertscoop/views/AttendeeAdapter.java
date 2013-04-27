@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+/**Custom Adapter Class for handling Attendee ListView*/
 public class AttendeeAdapter extends BaseAdapter {
 
 	  private LayoutInflater inflater;

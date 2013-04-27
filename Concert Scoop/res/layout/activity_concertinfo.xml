@@ -1,87 +1,52 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ListConcerts" >
+	xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+	android:layout_height="match_parent" android:paddingBottom="@dimen/activity_vertical_margin"
+	android:paddingLeft="@dimen/activity_horizontal_margin"
+	android:paddingRight="@dimen/activity_horizontal_margin"
+	android:paddingTop="@dimen/activity_vertical_margin" tools:context=".ListConcerts">
 
-    <TextView
-        android:id="@+id/header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="Concert Name:"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+	<TextView android:id="@+id/header" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true" android:layout_marginTop="10dp"
+		android:text="Concert Name:" android:textAppearance="?android:attr/textAppearanceLarge"
+		android:textColor="#000000" android:textSize="25sp" android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/Date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/header"
-        android:layout_marginTop="5dp"
-        android:layout_toLeftOf="@+id/Attendees"
-        android:text="Date:" />
+	<TextView android:id="@+id/Date" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+		android:layout_below="@+id/header" android:layout_marginTop="5dp"
+		android:layout_toLeftOf="@+id/Attendees" android:text="Date:" />
 
-    <TextView
-        android:id="@+id/City"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/Date"
-        android:layout_marginTop="2dp"
-        android:layout_toLeftOf="@+id/Attendees"
-        android:text="City:" />
+	<TextView android:id="@+id/City" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+		android:layout_below="@+id/Date" android:layout_marginTop="2dp"
+		android:layout_toLeftOf="@+id/Attendees" android:text="City:" />
 
-    <TextView
-        android:id="@+id/State"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/City"
-        android:layout_marginTop="2dp"
-        android:layout_toLeftOf="@+id/Attendees"
-        android:text="State:" />
+	<TextView android:id="@+id/State" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+		android:layout_below="@+id/City" android:layout_marginTop="2dp"
+		android:layout_toLeftOf="@+id/Attendees" android:text="State:" />
 
-    <TextView
-        android:id="@+id/Facebook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/State"
-        android:layout_marginTop="2dp"
-        android:layout_toLeftOf="@+id/Attendees"
-        android:text="Facebook:" />
+	<TextView android:id="@+id/Facebook" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+		android:layout_below="@+id/State" android:layout_marginTop="2dp"
+		android:layout_toLeftOf="@+id/Attendees" android:text="Facebook:" />
+		
+	<TextView android:id="@+id/Twitter" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+		android:layout_below="@+id/Facebook" android:layout_marginTop="2dp"
+		android:layout_toLeftOf="@+id/Attendees" android:text="Twitter:" />
 
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Attendees"
-        android:layout_below="@+id/Attendees"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:paddingBottom="0dp"
-        android:paddingTop="0dp" >
+	<ListView android:id="@android:id/list" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignLeft="@+id/Attendees"
+		android:layout_below="@+id/Attendees" android:divider="@android:color/transparent"
+		android:dividerHeight="0dp" android:paddingBottom="0dp"
+		android:paddingTop="0dp">
 
-    </ListView>
+	</ListView>
 
-    <TextView
-        android:id="@+id/Attendees"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/header"
-        android:textSize="15sp"
-        android:layout_marginRight="50sp"
-        android:text="Attendees:" />
+	<TextView android:id="@+id/Attendees" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignParentRight="true"
+		android:layout_below="@+id/header" android:textSize="15sp"
+		android:layout_marginRight="50sp" android:text="Attendees:" />
 
 </RelativeLayout>
