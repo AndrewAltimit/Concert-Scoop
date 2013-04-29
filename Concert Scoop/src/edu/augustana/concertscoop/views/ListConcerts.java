@@ -7,9 +7,9 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ListView;
+
 
 /**
  * An activity which lists concerts pulled from the server and provides
@@ -26,12 +26,6 @@ public class ListConcerts extends ListActivity {
 		populateListView();
 	}
 
-	/** Callback for the ActionBar */
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main, menu);
-		return true;
-	}
 
 	/** Populates the listview with concert objects */
 	private void populateListView() {
@@ -53,6 +47,7 @@ public class ListConcerts extends ListActivity {
 		registerForContextMenu(v);
 
 	}
+	
 
 	private ArrayList<Concert> concerts;
 

@@ -31,13 +31,6 @@ public class ConcertInfo extends ListActivity {
 		populateListView();
 	}
 
-	/** Callback to set up the action bar */
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main, menu);
-		return true;
-	}
-
 	/** Helper to show the concert's details in the view */
 	private void populateDataFields() {
 

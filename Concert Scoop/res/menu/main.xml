@@ -1,19 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
-        android:id="@+id/IM_Chats"
+        android:id="@+id/add_concert"
         android:orderInCategory="100"
-        android:showAsAction="ifRoom|withText" 
-        android:title='IM' />
+         android:showAsAction="ifRoom|withText" 
+         android:title='New' />
     
     <item
         android:id="@+id/list_concerts"
         android:orderInCategory="100"
         android:title='Concerts'
         android:showAsAction="ifRoom|withText" />
-    <item
-        android:id="@+id/add_concert"
+    
+        <item
+        android:id="@+id/IM_Chats"
         android:orderInCategory="100"
-         android:showAsAction="ifRoom|withText" 
-         android:title='New' />
+        android:showAsAction="ifRoom|withText" 
+        android:title='IM' />
     
 </menu>
