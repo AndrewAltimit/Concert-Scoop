@@ -13,8 +13,9 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name="edu.augustana.concertscoop.views.LogInActivity">
+        <activity android:name="edu.augustana.concertscoop.views.LogInActivity">
+        </activity><activity
+            android:name="edu.augustana.concertscoop.views.CreateConcert">
         </activity>
         <activity android:name="edu.augustana.concertscoop.views.ListConcerts">
             <intent-filter>

@@ -29,30 +29,40 @@ public final class R {
     public static final class id {
         public static final int Attendees=0x7f080003;
         public static final int City=0x7f080004;
+        public static final int CityLabel=0x7f08000a;
         public static final int Date=0x7f080002;
+        public static final int DateLabel=0x7f08000e;
         public static final int Facebook=0x7f080006;
-        public static final int IM_Chats=0x7f080012;
+        public static final int Name=0x7f080009;
+        public static final int NameLabel=0x7f080008;
         public static final int State=0x7f080005;
+        public static final int StateLabel=0x7f08000b;
+        public static final int Submit=0x7f080011;
+        public static final int Time=0x7f080010;
+        public static final int TimeLabel=0x7f08000f;
         public static final int Twitter=0x7f080007;
-        public static final int add_concert=0x7f080010;
-        public static final int facebookButton=0x7f08000b;
+        public static final int Zip=0x7f08000d;
+        public static final int ZipLabel=0x7f08000c;
+        public static final int add_concert=0x7f08001a;
+        public static final int facebookButton=0x7f080015;
         public static final int frag1=0x7f080000;
-        public static final int googleButton=0x7f08000a;
+        public static final int googleButton=0x7f080014;
         public static final int header=0x7f080001;
-        public static final int list_concerts=0x7f080011;
-        public static final int textView1=0x7f080008;
-        public static final int textView2=0x7f08000e;
-        public static final int textView3=0x7f08000d;
-        public static final int textView4=0x7f08000c;
-        public static final int textView5=0x7f08000f;
-        public static final int twitterButton=0x7f080009;
+        public static final int list_concerts=0x7f08001b;
+        public static final int textView1=0x7f080012;
+        public static final int textView2=0x7f080018;
+        public static final int textView3=0x7f080017;
+        public static final int textView4=0x7f080016;
+        public static final int textView5=0x7f080019;
+        public static final int twitterButton=0x7f080013;
     }
     public static final class layout {
         public static final int activity_concertinfo=0x7f030000;
-        public static final int activity_listconcerts=0x7f030001;
-        public static final int activity_log_in=0x7f030002;
-        public static final int attendeelistview=0x7f030003;
-        public static final int concertlistview=0x7f030004;
+        public static final int activity_createconcert=0x7f030001;
+        public static final int activity_listconcerts=0x7f030002;
+        public static final int activity_log_in=0x7f030003;
+        public static final int attendeelistview=0x7f030004;
+        public static final int concertlistview=0x7f030005;
     }
     public static final class menu {
         public static final int log_in=0x7f070000;

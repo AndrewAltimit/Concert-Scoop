@@ -11,10 +11,4 @@
         android:title='Concerts'
         android:showAsAction="ifRoom|withText" />
     
-        <item
-        android:id="@+id/IM_Chats"
-        android:orderInCategory="100"
-        android:showAsAction="ifRoom|withText" 
-        android:title='IM' />
-    
 </menu>

@@ -1,8 +1,8 @@
 package edu.augustana.concertscoop.views;
 
 import edu.augustana.concertscoop.R;
-import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,8 +36,15 @@ public class NavigationBar extends Fragment {
 		inflater.inflate(R.menu.main, menu);
 	}
 
+	/**OnClickListener for the ActionBar. Switches Activity*/
 	public boolean onOptionsItemSelected(MenuItem item) {
-		System.out.println(item.toString());
+		if (item.toString().equals("New") && getActivity().getClass() != CreateConcert.class){
+			Intent intent = new Intent(getActivity(), CreateConcert.class);
+			startActivity(intent);
+		} else if (item.toString().equals("Concerts") && getActivity().getClass() != ListConcerts.class){
+			Intent intent = new Intent(getActivity(), ListConcerts.class);
+			startActivity(intent);
+		} 
 		return true;
 	}
 
