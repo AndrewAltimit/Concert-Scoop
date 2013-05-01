@@ -1,142 +1,161 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".LogInActivity" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-    <fragment
-        android:id="@+id/frag1"
-        android:name="edu.augustana.concertscoop.views.NavigationBar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/NameLabel"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="30sp"
-        android:layout_marginTop="22dp"
-        android:text="Name:" />
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
 
-    <EditText
-        android:id="@+id/Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/NameLabel"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/NameLabel"
-        android:ems="10" >
-
-        <requestFocus />
-
-    </EditText>
-
-    <TextView
-        android:id="@+id/CityLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/NameLabel"
-        android:layout_marginTop="22dp"
-        android:text="City:" />
-
-    <EditText
-        android:id="@+id/City"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/CityLabel"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/Name"
-        android:ems="10" />
-
-    <TextView
-        android:id="@+id/StateLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/CityLabel"
-        android:layout_marginTop="22dp"
-        android:text="State:" />
-
-    <EditText
-        android:id="@+id/State"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/StateLabel"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/City"
-        android:ems="10" />
+        <fragment
+            android:id="@+id/frag1"
+            android:name="edu.augustana.concertscoop.views.NavigationBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
         <TextView
-        android:id="@+id/ZipLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/StateLabel"
-        android:layout_marginTop="22dp"
-        android:text="Zip:" />
+            android:id="@+id/ConcertNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="30sp"
+            android:layout_marginTop="22dp"
+            android:text="Name:" />
 
-    <EditText
-        android:id="@+id/Zip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/ZipLabel"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/State"
-        android:ems="10"
-        android:inputType="number" />
-    
-            <TextView
-        android:id="@+id/DateLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/ZipLabel"
-        android:layout_marginTop="22dp"
-        android:text="Date:" />
+        <EditText
+            android:id="@+id/ConcertName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ConcertNameLabel"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/ConcertNameLabel"
+            android:ems="10" >
 
-    <EditText
-        android:id="@+id/Date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/DateLabel"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/Zip"
-        android:ems="10"
-        android:inputType="date" />
-    
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/ConcertCityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ConcertNameLabel"
+            android:layout_marginTop="22dp"
+            android:text="City:" />
+
+        <EditText
+            android:id="@+id/ConcertCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ConcertCityLabel"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ConcertName"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/ConcertStateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ConcertCityLabel"
+            android:layout_marginTop="22dp"
+            android:text="State:" />
+
+        <EditText
+            android:id="@+id/ConcertState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ConcertStateLabel"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ConcertCity"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/ConcertZipLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ConcertStateLabel"
+            android:layout_marginTop="22dp"
+            android:text="Zip:" />
+
+        <EditText
+            android:id="@+id/ConcertZip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ConcertZipLabel"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ConcertState"
+            android:ems="10"
+            android:inputType="number" />
+        
                 <TextView
-        android:id="@+id/TimeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/DateLabel"
-        android:layout_marginTop="22dp"
-        android:text="Time:" />
+            android:id="@+id/ConcertFacebookLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ConcertZipLabel"
+            android:layout_marginTop="22dp"
+            android:text="Facebook:" />
 
-    <EditText
-        android:id="@+id/Time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/TimeLabel"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/Date"
-        android:ems="10"
-        android:inputType="time" />
+        <EditText
+            android:id="@+id/ConcertFacebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ConcertFacebookLabel"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ConcertZip"
+            android:ems="10"/>
+        
+        
+                        <TextView
+            android:id="@+id/ConcertTwitterLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ConcertFacebookLabel"
+            android:layout_marginTop="22dp"
+            android:text="Twitter Tag:" />
 
-    <Button
-        android:id="@+id/Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Time"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:text="Submit Concert" />
-    
-</RelativeLayout>
+        <EditText
+            android:id="@+id/ConcertTwitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ConcertTwitterLabel"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ConcertFacebook"
+            android:ems="10"/>
+
+        <DatePicker
+            android:id="@+id/ConcertDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ConcertTwitter"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="18dp"
+            android:layout_marginTop="22dp" />
+
+        <TimePicker
+            android:id="@+id/ConcertTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ConcertDate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/SubmitConcert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ConcertTime"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp"
+            android:text="Submit Concert" />
+    </RelativeLayout>
+
+</ScrollView>

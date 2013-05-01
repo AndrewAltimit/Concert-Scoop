@@ -38,10 +38,10 @@ public class NavigationBar extends Fragment {
 
 	/**OnClickListener for the ActionBar. Switches Activity*/
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item.toString().equals("New") && getActivity().getClass() != CreateConcert.class){
+		if (item.getItemId() == R.id.add_concert && getActivity().getClass() != CreateConcert.class){
 			Intent intent = new Intent(getActivity(), CreateConcert.class);
 			startActivity(intent);
-		} else if (item.toString().equals("Concerts") && getActivity().getClass() != ListConcerts.class){
+		} else if (item.getItemId() == R.id.list_concerts && getActivity().getClass() != ListConcerts.class){
 			Intent intent = new Intent(getActivity(), ListConcerts.class);
 			startActivity(intent);
 		} 
