@@ -1,5 +1,6 @@
 package edu.augustana.concertscoop.views;
 
+import java.util.Calendar;
 import java.util.ArrayList;
 import edu.augustana.concertscoop.R;
 import edu.augustana.concertscoop.models.Concert;
@@ -55,15 +56,11 @@ public class ConcertAdapter extends BaseAdapter {
 	      } else {
 	         holder = (ViewHolder) convertView.getTag();
 	      }
-	      holder.textView1.setText(objects.get(position).name);
-	      holder.textView2.setText("City: " + objects.get(position).city);
-	      
-	      //Parse out day and time from start_time
-	      String[] date = objects.get(position).start_time.split("T");
-	      holder.textView3.setText("Day: " +date[0]);
-	      holder.textView4.setText("Time: " + date[1].replace("Z"," UTC"));
-	      
-	      holder.textView5.setText("State: " + objects.get(position).state + ", " + objects.get(position).zip);
+	      holder.textView1.setText(objects.get(position).getName());
+	      holder.textView2.setText("City: " + objects.get(position).getCity());
+	      holder.textView3.setText("Date: " + objects.get(position).getStartDate());
+	      holder.textView4.setText("Time: " + objects.get(position).getStartTime());
+	      holder.textView5.setText("State: " + objects.get(position).getState() + ", " + objects.get(position).getZip());
 	      
 	      return convertView;
 	   }

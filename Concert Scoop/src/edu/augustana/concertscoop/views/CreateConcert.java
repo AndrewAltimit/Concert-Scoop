@@ -30,7 +30,7 @@ public class CreateConcert extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		Map<String, String> concertFields = new HashMap<String, String>();
+		Map<String, Object> concertFields = new HashMap<String, Object>();
 
 		concertFields.put("name", ((EditText) findViewById(R.id.ConcertName)).getText().toString());
 		concertFields.put("facebook_page", ((EditText) findViewById(R.id.ConcertFacebook)).getText().toString());
@@ -41,9 +41,10 @@ public class CreateConcert extends Activity implements OnClickListener{
 		concertFields.put("zip", ((EditText) findViewById(R.id.ConcertZip)).getText().toString());
 		Concert concert = new Concert(concertFields);
 		if(concert.postToServer()){
+			System.out.println(concert.toString());
 			Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_LONG).show();
 		} else {
-			Toast.makeText(getApplicationContext(), concert.error, Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), concert.getError(), Toast.LENGTH_LONG).show();
 		}
 		
 		

@@ -33,31 +33,31 @@ public class ConcertInfo extends ListActivity {
 	private void populateDataFields() {
 
 		TextView header = (TextView) findViewById(R.id.header);
-		header.setText(currentConcert.name);
+		header.setText(currentConcert.getName());
 
 		TextView date = (TextView) findViewById(R.id.Date);
-		date.setText("Date: " + currentConcert.start_time);
+		date.setText("Date: " + currentConcert.getStartDate() + "\n" + currentConcert.getStartTime());
 
 		TextView city = (TextView) findViewById(R.id.City);
-		city.setText("City: " + currentConcert.city);
+		city.setText("City: " + currentConcert.getCity());
 
 		TextView state = (TextView) findViewById(R.id.State);
-		state.setText("State: " + currentConcert.state);
+		state.setText("State: " + currentConcert.getState());
 
 		// If No Facebook Page Specified, Leave Data Field Blank
 		TextView facebook = (TextView) findViewById(R.id.Facebook);
-		if (currentConcert.facebook_page.equals("")) {
+		if (currentConcert.getFacebookPage().equals("")) {
 			facebook.setText("");
 		} else {
-			facebook.setText("Facebook: " + currentConcert.facebook_page);
+			facebook.setText("Facebook: " + currentConcert.getFacebookPage());
 		}
 
 		// If No twitter tag Specified, Leave Data Field Blank
 		TextView twitter = (TextView) findViewById(R.id.Twitter);
-		if (currentConcert.twitter_tag.equals("")) {
+		if (currentConcert.getTwitterTag().equals("")) {
 			twitter.setText("");
 		} else {
-			twitter.setText("Twitter: " + currentConcert.twitter_tag);
+			twitter.setText("Twitter: " + currentConcert.getTwitterTag());
 		}
 
 		TextView attendees = (TextView) findViewById(R.id.Attendees);

@@ -40,7 +40,7 @@ public class ListConcerts extends ListActivity {
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		Intent intent = new Intent(getApplicationContext(), ConcertInfo.class);
 		Bundle b = new Bundle();
-		b.putInt("id", concerts.get(position).id); // The concert ID
+		b.putInt("id", concerts.get(position).getId()); // The concert ID
 		intent.putExtras(b); // Transferring ID number to new activity
 		startActivity(intent);
 		registerForContextMenu(v);

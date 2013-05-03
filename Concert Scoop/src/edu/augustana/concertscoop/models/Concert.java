@@ -1,6 +1,10 @@
 package edu.augustana.concertscoop.models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Map;
 
 import org.apache.http.HttpResponse;
@@ -45,7 +49,7 @@ public class Concert {
 		setFields(jConcert);
 	}
 
-	public Concert(Map concert) {
+	public Concert(Map<?, ?> concert) {
 		JSONObject jConcert = new JSONObject(concert);
 		setFields(jConcert);
 	}
@@ -95,7 +99,7 @@ public class Concert {
 	public String toString() {
 		String result = "";
 		result = "City: " + city + " Facebook Page: " + facebook_page
-				+ " Name: " + name + " Start Time: " + start_time + " State: "
+				+ " Name: " + name + " Start Time: " + start_date_time + " State: "
 				+ state + " Twitter Tag: " + twitter_tag + " Zip: " + zip;
 		return result;
 	}
@@ -108,7 +112,41 @@ public class Concert {
 		return validateRequiredFields();
 	}
 	
-	
+	/*Getters*/
+	public String getName(){
+		return name;
+	}
+	public String getCity(){
+		return city;
+	}
+	public String getFacebookPage(){
+		return facebook_page;
+	}
+	public String getTwitterTag(){
+		return twitter_tag;
+	}
+	public String getStartTime(){
+		SimpleDateFormat df = new SimpleDateFormat();
+		df.applyPattern("hh:mm a");
+		return df.format((start_date_time.getTime()));
+	}
+	public String getStartDate(){
+		SimpleDateFormat df = new SimpleDateFormat();
+		df.applyPattern("MM/dd/yyyy");
+		return df.format(start_date_time.getTime());
+	}
+	public String getState(){
+		return state;
+	}
+	public String getZip(){
+		return city;
+	}
+	public int getId(){
+		return id;
+	}
+	public String getError(){
+		return error;
+	}
 	
 	/**
 	 * Helper method for the constructors, sets member variables values by
@@ -123,7 +161,7 @@ public class Concert {
 			city = (String) jConcert.get("city");
 			facebook_page = (String) jConcert.get("facebook_page");
 			name = (String) jConcert.get("name");
-			start_time = (String) jConcert.get("start_time");
+			start_date_time = parseStringToCal((String) jConcert.get("start_time"));
 			state = (String) jConcert.get("state");
 			twitter_tag = (String) jConcert.get("twitter_tag");
 			zip = (String) jConcert.get("zip");
@@ -148,16 +186,31 @@ public class Concert {
 		
 		return error.equals("");
 	}
+	
+	private Calendar parseStringToCal(String cal){
+		Calendar c = new GregorianCalendar();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+		try {
+			c.setTime(sdf.parse(cal));
+			System.out.println(c);
+			return c;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}		
+		return null;
+	}
+	
 
-	public String city = "";
-	public String facebook_page = "";
-	public String name = "";
-	public String start_time = "";
-	public String state = "";
-	public String twitter_tag = "";
-	public String zip = "";
-	public String error = "";
-	public int id;
+	
+	private String city = "";
+	private String facebook_page = "";
+	private String name = "";
+	private Calendar start_date_time;
+	private String state = "";
+	private String twitter_tag = "";
+	private String zip = "";
+	private String error = "";
+	private int id;
 	/** URL for getting a list of concerts */
 	public static final String GET_CONCERTS = "concerts.json";
 
