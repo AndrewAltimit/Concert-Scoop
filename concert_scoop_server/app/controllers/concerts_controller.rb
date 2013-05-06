@@ -1,5 +1,5 @@
 class ConcertsController < ApplicationController
-  
+  protect_from_forgery :except => :create
   def index
     @concerts = Concert.all
 

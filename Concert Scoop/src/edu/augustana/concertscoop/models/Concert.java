@@ -15,7 +15,7 @@ import edu.augustana.concertscoop.util.JSONParser;
 
 /**
  * Models an instance of a concert. Provides an API to get all concerts from the
- * server and CRUD opperations
+ * server and CRUD operations
  */
 public class Concert {
 
@@ -147,6 +147,10 @@ public class Concert {
 		return error;
 	}
 	
+	public JSONObject getJSON(){
+		return jObject;
+	}
+	
 	/**
 	 * Helper method for the constructors, sets member variables values by
 	 * matching the JSON object's keys to Concert fields
@@ -164,6 +168,7 @@ public class Concert {
 			state = (String) jConcert.get("state");
 			twitter_tag = (String) jConcert.get("twitter_tag");
 			zip = (String) jConcert.get("zip");
+			jObject = jConcert;
 			id = (Integer) jConcert.get("id");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -208,6 +213,7 @@ public class Concert {
 	private String twitter_tag = "";
 	private String zip = "";
 	private String error = "";
+	private JSONObject jObject;
 	private int id;
 	/** URL for getting a list of concerts */
 	public static final String GET_CONCERTS = "concerts.json";

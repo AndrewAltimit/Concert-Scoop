@@ -64,8 +64,9 @@ public class ServerRequest extends AsyncTask<String, Void, HttpResponse> {
 		    try {
 		    	DefaultHttpClient httpClient = new DefaultHttpClient();
 		        HttpPost postRequest = new HttpPost(getURI());
-		        StringEntity params =new StringEntity("concert={\"city\":\"Rock Island\",\"created_at\":\"2013-05-06T18:35:13Z\",\"facebook_page\":null,\"id\":null,\"name\":\"Test Concert\",\"start_time\":\"2013-05-11T18:35:13Z\",\"state\":\"IL\",\"twitter_tag\":null,\"updated_at\":\"2013-05-06T18:35:13Z\",\"zip\":\"61201\"}");
-		        postRequest.addHeader("content-type", "application/x-www-form-urlencoded");
+		        //StringEntity params =new StringEntity("{\"city\":\"Rock Island\",\"facebook_page\":null,\"name\":\"Test Concert\",\"start_time\":\"2013-05-11T18:35:13Z\",\"state\":\"IL\",\"twitter_tag\":null,\"zip\":\"61201\"}");
+		        StringEntity params =new StringEntity(body);
+		        postRequest.addHeader("content-type", "application/json");
 		        postRequest.setEntity(params);
 		        response = httpClient.execute(postRequest);
 		        

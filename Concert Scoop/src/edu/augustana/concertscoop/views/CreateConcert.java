@@ -46,7 +46,7 @@ public class CreateConcert extends Activity implements OnClickListener{
 		Concert concert = new Concert(concertFields);
 		if(concert.postToServer()){
 			try {
-				ServerRequest conn = new ServerRequest("concerts",concert.toString(),"POST");
+				ServerRequest conn = new ServerRequest("concerts",concert.getJSON().toString(),"POST");
 				HttpResponse response;
 				//NEED TO SEND A STRING LIKE THIS: "{\"name\":\"myname\",\"age\":\"20\"} "
 				response = conn.execute().get();
@@ -64,7 +64,7 @@ public class CreateConcert extends Activity implements OnClickListener{
 	private String getTime(){
 		TimePicker timeObj = (TimePicker) findViewById(R.id.ConcertTime);
 		timeObj.clearFocus();
-		String time = String.format("%02d", timeObj.getCurrentHour()) + ":" +  String.format("%02d", timeObj.getCurrentMinute()) + ":00";
+		String time = String.format("%02d", timeObj.getCurrentHour()) + ":" +  String.format("%02d", timeObj.getCurrentMinute()) + ":00" + "Z";
 		return time;
 	}
 	
@@ -74,7 +74,7 @@ public class CreateConcert extends Activity implements OnClickListener{
 		int day  = dateObj.getDayOfMonth();
 		int month= dateObj.getMonth();
 		int year = dateObj.getYear();
-		String dateString = day + "-" + month + "-" + year;
+		String dateString = day + "-" + month + "-" + year + "T";
 		return dateString;
 	}
 	
