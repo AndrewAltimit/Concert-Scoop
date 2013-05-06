@@ -35,4 +35,6 @@
   <%= @concert.facebook_page %>
 </p>
 
-<%= link_to 'Edit', edit_concert_path(@concert) %> |
+<h2>Attendees</h2>
+<%= render @concert.attendees %>
+<br><br>
