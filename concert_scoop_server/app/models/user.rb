@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :provider, :uid
   
+  has_many :attendees
+  has_many :concerts, :through => :attendees
+  
   def self.find_for_twitter_oauth(omniauth)
     authentication = Authentication.find_by_provider_and_uuid(omniauth['provider'], omniauth['uid'])
     if authentication && authentication.user
