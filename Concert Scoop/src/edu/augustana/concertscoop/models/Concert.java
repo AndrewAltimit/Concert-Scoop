@@ -26,11 +26,10 @@ public class Concert {
 	 *            The PK for the concert on the server
 	 * */
 	public Concert(int server_id) {
-		ServerConnection conn = new ServerConnection();
+		ServerRequest conn = new ServerRequest("concerts/" + server_id + ".json", "GET");
 		HttpResponse response;
 		try {
-			String filename = "concerts/" + server_id + ".json";
-			response = conn.execute(filename).get();
+			response = conn.execute().get();
 
 			JSONParser jParser = new JSONParser(response);
 			setFields(jParser.parse(""));
@@ -61,10 +60,10 @@ public class Concert {
 	 * @return ArrayList<Concert> of all concerts on the server
 	 */
 	public static ArrayList<Concert> getConcerts() {
-		ServerConnection conn = new ServerConnection();
+		ServerRequest conn = new ServerRequest(GET_CONCERTS,"GET");
 		HttpResponse response;
 		try {
-			response = conn.execute(GET_CONCERTS).get();
+			response = conn.execute().get();
 			JSONParser jParser = new JSONParser(response);
 			JSONArray jsonConcerts;
 			jsonConcerts = jParser.parseAll("");
@@ -192,7 +191,6 @@ public class Concert {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 		try {
 			c.setTime(sdf.parse(cal));
-			System.out.println(c);
 			return c;
 		} catch (ParseException e) {
 			e.printStackTrace();

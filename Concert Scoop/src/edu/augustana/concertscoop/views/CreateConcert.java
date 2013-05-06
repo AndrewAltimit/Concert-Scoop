@@ -2,7 +2,10 @@ package edu.augustana.concertscoop.views;
 
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+
+import org.apache.http.HttpResponse;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -15,6 +18,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import edu.augustana.concertscoop.R;
 import edu.augustana.concertscoop.models.Concert;
+import edu.augustana.concertscoop.models.ServerRequest;
 
 public class CreateConcert extends Activity implements OnClickListener{
 	
@@ -41,8 +45,15 @@ public class CreateConcert extends Activity implements OnClickListener{
 		concertFields.put("zip", ((EditText) findViewById(R.id.ConcertZip)).getText().toString());
 		Concert concert = new Concert(concertFields);
 		if(concert.postToServer()){
-			System.out.println(concert.toString());
-			Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_LONG).show();
+			try {
+				ServerRequest conn = new ServerRequest("concerts",concert.toString(),"POST");
+				HttpResponse response;
+				//NEED TO SEND A STRING LIKE THIS: "{\"name\":\"myname\",\"age\":\"20\"} "
+				response = conn.execute().get();
+				Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_LONG).show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else {
 			Toast.makeText(getApplicationContext(), concert.getError(), Toast.LENGTH_LONG).show();
 		}
@@ -60,8 +71,10 @@ public class CreateConcert extends Activity implements OnClickListener{
 	private String getDate(){
 		DatePicker dateObj = (DatePicker) findViewById(R.id.ConcertDate);
 		dateObj.clearFocus();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String dateString = sdf.format(dateObj);
+		int day  = dateObj.getDayOfMonth();
+		int month= dateObj.getMonth();
+		int year = dateObj.getYear();
+		String dateString = day + "-" + month + "-" + year;
 		return dateString;
 	}
 	
