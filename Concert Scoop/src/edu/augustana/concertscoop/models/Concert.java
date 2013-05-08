@@ -27,7 +27,7 @@ public class Concert {
 	 * */
 	public Concert(int server_id) {
 		ServerRequest conn = new ServerRequest("concerts/" + server_id + ".json", "GET");
-		HttpResponse response;
+		String response;
 		try {
 			response = conn.execute().get();
 
@@ -61,7 +61,7 @@ public class Concert {
 	 */
 	public static ArrayList<Concert> getConcerts() {
 		ServerRequest conn = new ServerRequest(GET_CONCERTS,"GET");
-		HttpResponse response;
+		String response;
 		try {
 			response = conn.execute().get();
 			JSONParser jParser = new JSONParser(response);

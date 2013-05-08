@@ -47,7 +47,7 @@ public class CreateConcert extends Activity implements OnClickListener{
 		if(concert.postToServer()){
 			try {
 				ServerRequest conn = new ServerRequest("concerts",concert.getJSON().toString(),"POST");
-				HttpResponse response;
+				String response;
 				response = conn.execute().get();
 				Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_LONG).show();
 				finish();

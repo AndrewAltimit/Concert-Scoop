@@ -22,13 +22,8 @@ public class JSONParser {
 	 * @param serverReply
 	 *            The HTTPResponse
 	 */
-	public JSONParser(HttpResponse serverReply) {
-		HttpEntity httpEntity = serverReply.getEntity();
-		try {
-			is = httpEntity.getContent();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public JSONParser(String serverReply) {
+		jsonString = serverReply;
 	}
 
 	/**
@@ -37,7 +32,6 @@ public class JSONParser {
 	 * @return JSONArray All the JSONObjects that were in the HttpRequest
 	 */
 	public JSONArray parseAll() {
-		getStringFromResponse();
 		try {
 			JSONArray jArray;
 			jArray = new JSONArray(jsonString);
@@ -81,7 +75,6 @@ public class JSONParser {
 	 * @return JSONObject The JSONObject from the HttpRequest
 	 */
 	public JSONObject parse() {
-		getStringFromResponse();
 		try {
 			JSONObject jObject;
 			jObject = new JSONObject(jsonString);
@@ -115,27 +108,5 @@ public class JSONParser {
 		return jObject;
 	}
 
-	/**
-	 * Takes the HttpResponse and converts it to a string that can be used to
-	 * build JSONArrays or JSONObjects
-	 */
-	private void getStringFromResponse() {
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					is, "UTF-8"), 8);
-			StringBuilder sb = new StringBuilder();
-			String line = null;
-			while ((line = reader.readLine()) != null) {
-				sb.append(line + "\n");
-			}
-			is.close();
-			jsonString = sb.toString();
-
-		} catch (Exception e) {
-			Log.e("Buffer Error", "Error converting result " + e.toString());
-		}
-	}
-
-	private InputStream is;
 	private String jsonString;
 }

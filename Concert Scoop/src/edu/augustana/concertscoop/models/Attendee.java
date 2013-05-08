@@ -14,7 +14,7 @@ public class Attendee {
 
 	public Attendee(JSONObject jAttendee) {
 		try {
-			email = jAttendee.get("user_id").toString();
+			email = (String) jAttendee.get("email");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -26,7 +26,7 @@ public class Attendee {
 	
 	public static ArrayList<Attendee> getAttendees(int id) {
 		ServerRequest conn = new ServerRequest("concerts/" + Integer.toString(id) + "/attendees.json","GET");
-		HttpResponse response;
+		String response;
 		try {
 			response = conn.execute().get();
 			JSONParser jParser = new JSONParser(response);
