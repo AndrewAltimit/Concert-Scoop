@@ -37,7 +37,7 @@ public class ConcertInfo extends ListActivity {
 		header.setText(currentConcert.getName());
 
 		TextView date = (TextView) findViewById(R.id.Date);
-		//date.setText("Date: " + currentConcert.getStartDate() + "\n" + currentConcert.getStartTime());
+		date.setText("Date: " + currentConcert.getStartDate() + "\n" + currentConcert.getStartTime());
 
 		TextView city = (TextView) findViewById(R.id.City);
 		city.setText("City: " + currentConcert.getCity());

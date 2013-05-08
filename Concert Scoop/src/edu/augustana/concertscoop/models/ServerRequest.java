@@ -87,7 +87,8 @@ public class ServerRequest extends AsyncTask<String, Void, HttpResponse> {
 	
 
 	private int port = 3000;
-	private String host = "173.21.202.52";
+	//private String host = "173.21.202.52";
+	private String host = "10.0.2.2";
 	private String path;
 	private String body;
 	private HttpResponse response;
