@@ -27,12 +27,8 @@ public class ServerRequest extends AsyncTask<String, Void, HttpResponse> {
 	
 	
 	/**
-	 * Constructor - Begins a connection with the server as an Asynchronous Task
+	 * Begins a connection with the server as an Asynchronous Task
 	 * and gets a reply
-	 * 
-	 * @param String
-	 *            [0] URI filename
-	 *            [1] Post data
 	 */
 	@Override
 	protected HttpResponse doInBackground(String... params) {
@@ -91,7 +87,7 @@ public class ServerRequest extends AsyncTask<String, Void, HttpResponse> {
 	
 
 	private int port = 3000;
-	private String host = "10.0.2.2";
+	private String host = "173.21.202.52";
 	private String path;
 	private String body;
 	private HttpResponse response;

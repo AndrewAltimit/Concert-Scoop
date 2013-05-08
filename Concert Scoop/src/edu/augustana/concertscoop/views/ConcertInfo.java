@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import edu.augustana.concertscoop.R;
+import edu.augustana.concertscoop.models.Attendee;
 import edu.augustana.concertscoop.models.Concert;
 
 /**
@@ -36,7 +37,7 @@ public class ConcertInfo extends ListActivity {
 		header.setText(currentConcert.getName());
 
 		TextView date = (TextView) findViewById(R.id.Date);
-		date.setText("Date: " + currentConcert.getStartDate() + "\n" + currentConcert.getStartTime());
+		//date.setText("Date: " + currentConcert.getStartDate() + "\n" + currentConcert.getStartTime());
 
 		TextView city = (TextView) findViewById(R.id.City);
 		city.setText("City: " + currentConcert.getCity());
@@ -65,23 +66,18 @@ public class ConcertInfo extends ListActivity {
 	}
 
 	/** Populate ListView with Attendees */
-	//TODO REMOVE EXAMPLE DATA
 	private void populateListView() {
 		ListView concertListView = (ListView) findViewById(android.R.id.list);
-		// Example Data
-		ArrayList<String> attendeeNames = new ArrayList<String>();
-		attendeeNames.add("Joe Smith");
-		attendeeNames.add("John Adams");
-		attendeeNames.add("Marquesha Williams");
-
+		ArrayList<Attendee> attendeeNames = new ArrayList<Attendee>();
+		attendeeNames = Attendee.getAttendees(concertid);
 		AttendeeAdapter customAdapter = new AttendeeAdapter(this, attendeeNames);
 		concertListView.setAdapter(customAdapter);
-
 	}
 
 	/** OnClickListener for when an attendee gets clicked */
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		//TODO implement Attendee Clicked. Start IM Activity
+		
 	}
 
 	private int concertid;

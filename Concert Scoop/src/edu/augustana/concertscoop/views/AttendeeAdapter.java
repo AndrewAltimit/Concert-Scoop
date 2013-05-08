@@ -2,6 +2,7 @@ package edu.augustana.concertscoop.views;
 
 import java.util.ArrayList;
 import edu.augustana.concertscoop.R;
+import edu.augustana.concertscoop.models.Attendee;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +14,13 @@ import android.widget.TextView;
 public class AttendeeAdapter extends BaseAdapter {
 
 	  private LayoutInflater inflater;
-	  private ArrayList<String> objects;
+	  private ArrayList<Attendee> objects;
 
 	   private class ViewHolder {
 	      TextView textView1;
 	   }
 
-	   public AttendeeAdapter(Context context, ArrayList<String> objects) {
+	   public AttendeeAdapter(Context context, ArrayList<Attendee> objects) {
 	      inflater = LayoutInflater.from(context);
 	      this.objects = objects;
 	   }
@@ -28,7 +29,7 @@ public class AttendeeAdapter extends BaseAdapter {
 	      return objects.size();
 	   }
 
-	   public String getItem(int position) {
+	   public Attendee getItem(int position) {
 	      return objects.get(position);
 	   }
 
@@ -48,7 +49,7 @@ public class AttendeeAdapter extends BaseAdapter {
 	      }
 	      
 	      
-	      holder.textView1.setText(objects.get(position));
+	      holder.textView1.setText(objects.get(position).getEmail());
 	      
 	      return convertView;
 	   }

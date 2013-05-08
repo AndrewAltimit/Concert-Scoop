@@ -169,9 +169,10 @@ public class Concert {
 			twitter_tag = (String) jConcert.get("twitter_tag");
 			zip = (String) jConcert.get("zip");
 			jObject = jConcert;
-			id = (Integer) jConcert.get("id");
+			if (jConcert.get("id") != null){
+				id = (Integer) jConcert.get("id");
+			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
