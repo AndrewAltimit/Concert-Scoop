@@ -5,7 +5,7 @@ class AttendeesController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @attendees }
+      format.json { render json: @attendees.map { |attendee| attendee.user}.to_json(:only => [:id, :email])}
     end
   end
 end
