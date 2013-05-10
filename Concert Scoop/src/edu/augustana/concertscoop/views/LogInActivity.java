@@ -34,9 +34,8 @@ public class LogInActivity extends Activity {
 		{
 			//Attached to the google button
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),
-                        "Google was clicked!",
-                         Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), ListConcerts.class);
+                startActivity(intent);
             }
 		}); 
 		
@@ -45,9 +44,8 @@ public class LogInActivity extends Activity {
 		{
 			//Attached to the facebook button
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),
-                        "Facebook was clicked!",
-                         Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), ListConcerts.class);
+                startActivity(intent);
             }
 		});
         

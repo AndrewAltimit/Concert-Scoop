@@ -47,6 +47,12 @@ public class ListConcerts extends ListActivity {
 
 	}
 	
+	protected void onResume(){
+		super.onResume();
+		concerts = Concert.getConcerts();
+		populateListView();
+	}
+	
 
 	private ArrayList<Concert> concerts;
 

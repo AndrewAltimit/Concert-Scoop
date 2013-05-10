@@ -5,14 +5,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -117,9 +115,9 @@ public class ServerRequest extends AsyncTask<String, Void, String> {
 	}
 
 	private int port = 3000;
-	private String host = "173.21.202.52";
+	//private String host = "173.21.202.52";
 	//private String host = "10.0.2.2";
-	//private String host = "143.226.54.158";
+	private String host = "143.226.54.206";
 	private String path;
 	private String body;
 	private HttpResponse response;

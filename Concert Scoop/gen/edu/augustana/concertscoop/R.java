@@ -21,24 +21,27 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int facebook=0x7f020000;
-        public static final int google=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int twitter=0x7f020003;
+        public static final int background=0x7f020000;
+        public static final int facebook=0x7f020001;
+        public static final int google=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int twitter=0x7f020004;
     }
     public static final class id {
         public static final int Attendees=0x7f080003;
         public static final int City=0x7f080004;
         public static final int ConcertCity=0x7f08000c;
         public static final int ConcertCityLabel=0x7f08000b;
-        public static final int ConcertDate=0x7f080015;
+        public static final int ConcertDate=0x7f080016;
+        public static final int ConcertDateLabel=0x7f080015;
         public static final int ConcertFacebook=0x7f080012;
         public static final int ConcertFacebookLabel=0x7f080011;
         public static final int ConcertName=0x7f08000a;
         public static final int ConcertNameLabel=0x7f080009;
         public static final int ConcertState=0x7f08000e;
         public static final int ConcertStateLabel=0x7f08000d;
-        public static final int ConcertTime=0x7f080016;
+        public static final int ConcertTime=0x7f080018;
+        public static final int ConcertTimeLabel=0x7f080017;
         public static final int ConcertTwitter=0x7f080014;
         public static final int ConcertTwitterLabel=0x7f080013;
         public static final int ConcertZip=0x7f080010;
@@ -47,20 +50,20 @@ public final class R {
         public static final int Facebook=0x7f080006;
         public static final int ScrollView01=0x7f080008;
         public static final int State=0x7f080005;
-        public static final int SubmitConcert=0x7f080017;
+        public static final int SubmitConcert=0x7f080019;
         public static final int Twitter=0x7f080007;
-        public static final int add_concert=0x7f080020;
-        public static final int facebookButton=0x7f08001b;
+        public static final int add_concert=0x7f080022;
+        public static final int facebookButton=0x7f08001d;
         public static final int frag1=0x7f080000;
-        public static final int googleButton=0x7f08001a;
+        public static final int googleButton=0x7f08001c;
         public static final int header=0x7f080001;
-        public static final int list_concerts=0x7f080021;
-        public static final int textView1=0x7f080018;
-        public static final int textView2=0x7f08001e;
-        public static final int textView3=0x7f08001d;
-        public static final int textView4=0x7f08001c;
-        public static final int textView5=0x7f08001f;
-        public static final int twitterButton=0x7f080019;
+        public static final int list_concerts=0x7f080023;
+        public static final int textView1=0x7f08001a;
+        public static final int textView2=0x7f080020;
+        public static final int textView3=0x7f08001f;
+        public static final int textView4=0x7f08001e;
+        public static final int textView5=0x7f080021;
+        public static final int twitterButton=0x7f08001b;
     }
     public static final class layout {
         public static final int activity_concertinfo=0x7f030000;
